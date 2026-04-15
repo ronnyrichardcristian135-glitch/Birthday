@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Untuk Kamu ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      top: 30%;
+      transform: translateY(-30%);
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      max-width: 500px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .heart {
+      font-size: 50px;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .fade {
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #fff;
+      color: #ff4d6d;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container fade">
+  <h1>Happy Birthday, Sayang 🎂</h1>
+
+  <p id="text"></p>
+
+  <div class="heart">❤️</div>
+
+  <button onclick="nextMessage()">Klik Aku</button>
+</div>
+
+<script>
+  const messages = [
+    "Hari ini bukan cuma ulang tahun kamu...",
+    "Tapi hari dimana dunia dapet seseorang yang bikin hidup aku lebih berarti.",
+    "Terima kasih sudah ada, sudah sabar, dan tetap bertahan sejauh ini.",
+    "Semoga semua yang kamu inginkan pelan-pelan jadi nyata.",
+    "Dan semoga aku tetap jadi bagian dari cerita kamu ke depan ❤️"
+  ];
+
+  let index = 0;
+
+  function nextMessage() {
+    document.getElementById("text").innerText = messages[index];
+    index++;
+    if(index >= messages.length) index = 0;
+  }
+</script>
+
+</body>
+</html>
