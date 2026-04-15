@@ -1,99 +1,109 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Untuk Kamu ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Maharani ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to top, #ffdde1, #ee9ca7);
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      text-align: center;
-      overflow: hidden;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #ffdde1, #ee9ca7);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
 
-    .container {
-      position: relative;
-      top: 30%;
-      transform: translateY(-30%);
-      padding: 20px;
-    }
+  .container {
+    position: relative;
+    top: 30%;
+    transform: translateY(-30%);
+    padding: 20px;
+  }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+  h1 {
+    font-size: 32px;
+  }
 
-    p {
-      font-size: 20px;
-      max-width: 500px;
-      margin: auto;
-      line-height: 1.6;
-    }
+  #text {
+    margin-top: 20px;
+    font-size: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    min-height: 60px;
+  }
 
-    .heart {
-      font-size: 50px;
-      animation: beat 1s infinite;
-    }
+  .heart {
+    font-size: 50px;
+    animation: beat 1s infinite;
+    margin-top: 20px;
+  }
 
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
 
-    .fade {
-      opacity: 0;
-      animation: fadeIn 3s forwards;
-    }
+  button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4d6d;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    button {
-      margin-top: 30px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      background: #fff;
-      color: #ff4d6d;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+  .final {
+    display: none;
+    font-size: 22px;
+    margin-top: 30px;
+  }
+</style>
 </head>
 
 <body>
 
-<div class="container fade">
-  <h1>Happy Birthday, Sayang 🎂</h1>
-
-  <p id="text"></p>
-
+<div class="container">
+  <h1>Happy Birthday Maharani Setia Ning Tyas 🎂</h1>
+  <div id="text">Klik tombol di bawah ya...</div>
   <div class="heart">❤️</div>
+  <button onclick="next()">Klik Aku</button>
 
-  <button onclick="nextMessage()">Klik Aku</button>
+  <div class="final" id="finalMessage">
+    Di usia kamu yang ke-23 ini...<br><br>
+    Semoga semua yang kamu impikan pelan-pelan jadi nyata.<br><br>
+    Aku mungkin bukan yang paling sempurna...<br>
+    Tapi aku mau jadi yang selalu ada buat kamu.<br><br>
+    Selamat ulang tahun ya, Maharani ❤️
+  </div>
 </div>
 
 <script>
-  const messages = [
-    "Hari ini bukan cuma ulang tahun kamu...",
-    "Tapi hari dimana dunia dapet seseorang yang bikin hidup aku lebih berarti.",
-    "Terima kasih sudah ada, sudah sabar, dan tetap bertahan sejauh ini.",
-    "Semoga semua yang kamu inginkan pelan-pelan jadi nyata.",
-    "Dan semoga aku tetap jadi bagian dari cerita kamu ke depan ❤️"
-  ];
+const messages = [
+  "Hari ini bukan hari biasa...",
+  "Karena hari ini Maharani Setia Ning Tyas genap 23 tahun 🎉",
+  "Terima kasih sudah hadir dan membawa banyak warna dalam hidup aku.",
+  "Senyum kamu itu sederhana... tapi efeknya besar buat aku.",
+  "Semoga hari kamu selalu dipenuhi kebahagiaan, seperti kamu bikin aku bahagia."
+];
 
-  let index = 0;
+let index = 0;
 
-  function nextMessage() {
+function next() {
+  if (index < messages.length) {
     document.getElementById("text").innerText = messages[index];
     index++;
-    if(index >= messages.length) index = 0;
+  } else {
+    document.getElementById("text").style.display = "none";
+    document.getElementById("finalMessage").style.display = "block";
   }
+}
 </script>
 
 </body>
