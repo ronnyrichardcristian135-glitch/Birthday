@@ -3,105 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Maharani ❤️</title>
+<title>Buku Untuk Maharani ❤️</title>
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to top, #ffdde1, #ee9ca7);
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
-    text-align: center;
-    overflow: hidden;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background: #d8cfc4;
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  .container {
-    position: relative;
-    top: 30%;
-    transform: translateY(-30%);
-    padding: 20px;
-  }
+/* Buku */
+.book {
+  width: 320px;
+  height: 450px;
+  background: #fffaf0;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 25px;
+  text-align: center;
+  position: relative;
+}
 
-  h1 {
-    font-size: 32px;
-  }
+/* Judul */
+h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 
-  #text {
-    margin-top: 20px;
-    font-size: 20px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-    min-height: 60px;
-  }
+/* Isi */
+.page {
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 200px;
+  transition: opacity 0.5s;
+}
 
-  .heart {
-    font-size: 50px;
-    animation: beat 1s infinite;
-    margin-top: 20px;
-  }
+/* Tombol */
+button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 15px;
+  border: none;
+  background: #8b5e3c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  @keyframes beat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
-
-  button {
-    margin-top: 30px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    background: white;
-    color: #ff4d6d;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  .final {
-    display: none;
-    font-size: 22px;
-    margin-top: 30px;
-  }
+/* Nomor halaman */
+.page-number {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
+  color: gray;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>Happy Birthday Maharani Setia Ning Tyas 🎂</h1>
-  <div id="text">Klik tombol di bawah ya...</div>
-  <div class="heart">❤️</div>
-  <button onclick="next()">Klik Aku</button>
+<div class="book">
+  <h1>Untuk Maharani 💖</h1>
 
-  <div class="final" id="finalMessage">
-    Di usia kamu yang ke-23 ini...<br><br>
-    Semoga semua yang kamu impikan pelan-pelan jadi nyata.<br><br>
-    Aku mungkin bukan yang paling sempurna...<br>
-    Tapi aku mau jadi yang selalu ada buat kamu.<br><br>
-    Selamat ulang tahun ya, Maharani ❤️
+  <div id="content" class="page">
+    Klik untuk membuka halaman pertama...
   </div>
+
+  <div class="page-number" id="pageNum">Halaman 0</div>
+
+  <button onclick="nextPage()">➡</button>
 </div>
 
 <script>
-const messages = [
-  "Hari ini bukan hari biasa...",
-  "Karena hari ini Maharani Setia Ning Tyas genap 23 tahun 🎉",
-  "Terima kasih sudah hadir dan membawa banyak warna dalam hidup aku.",
-  "Senyum kamu itu sederhana... tapi efeknya besar buat aku.",
-  "Semoga hari kamu selalu dipenuhi kebahagiaan, seperti kamu bikin aku bahagia."
+const pages = [
+  "Hari ini aku buka cerita tentang kamu...",
+  "Tentang seseorang yang lahir 23 tahun lalu 🎂",
+  "Dan tanpa sadar, jadi alasan aku tersenyum setiap hari.",
+  "Terima kasih sudah hadir di hidup aku.",
+  "Semoga di setiap langkah kamu, ada bahagia yang ikut berjalan.",
+  "Dan kalau boleh jujur...",
+  "Aku ingin tetap jadi bagian dari cerita kamu ke depan ❤️"
 ];
 
-let index = 0;
+let current = 0;
 
-function next() {
-  if (index < messages.length) {
-    document.getElementById("text").innerText = messages[index];
-    index++;
+function nextPage() {
+  if (current < pages.length) {
+    document.getElementById("content").style.opacity = 0;
+
+    setTimeout(() => {
+      document.getElementById("content").innerText = pages[current];
+      document.getElementById("content").style.opacity = 1;
+      document.getElementById("pageNum").innerText = "Halaman " + (current + 1);
+      current++;
+    }, 300);
   } else {
-    document.getElementById("text").style.display = "none";
-    document.getElementById("finalMessage").style.display = "block";
+    document.getElementById("content").innerHTML = "Selamat ulang tahun Maharani ❤️<br><br>Aku harap cerita ini belum selesai.";
+    document.getElementById("pageNum").innerText = "Tamat";
   }
 }
 </script>
