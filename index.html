@@ -8,105 +8,88 @@
 <style>
 body {
   margin: 0;
-  padding: 0;
   background: #d8cfc4;
-  font-family: 'Georgia', serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: Georgia, serif;
 }
 
-/* Buku */
+/* Container buku */
 .book {
-  width: 320px;
-  height: 450px;
-  background: #fffaf0;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  padding: 25px;
-  text-align: center;
   position: relative;
+  width: 300px;
+  height: 420px;
 }
 
-/* Judul */
-h1 {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-/* Isi */
+/* Halaman */
 .page {
-  font-size: 18px;
-  line-height: 1.6;
-  min-height: 200px;
-  transition: opacity 0.5s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fffaf0;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  transform-origin: left;
+  transition: transform 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+/* Halaman belakang */
+.page.back {
+  transform: rotateY(180deg);
+}
+
+/* Flip */
+.page.flipped {
+  transform: rotateY(-180deg);
 }
 
 /* Tombol */
 button {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 8px 15px;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
   border: none;
   background: #8b5e3c;
   color: white;
   border-radius: 5px;
   cursor: pointer;
 }
-
-/* Nomor halaman */
-.page-number {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 12px;
-  color: gray;
-}
 </style>
 </head>
 
 <body>
 
-<div class="book">
-  <h1>Untuk Maharani 💖</h1>
+<div class="book" id="book">
 
-  <div id="content" class="page">
-    Klik untuk membuka halaman pertama...
-  </div>
+  <div class="page" id="p1">Untuk Maharani 💖</div>
+  <div class="page" id="p2">Hari ini kamu genap 23 tahun 🎂</div>
+  <div class="page" id="p3">Terima kasih sudah hadir di hidup aku</div>
+  <div class="page" id="p4">Kamu sederhana... tapi berarti</div>
+  <div class="page" id="p5">Semoga kamu selalu bahagia</div>
+  <div class="page" id="p6">Dan aku tetap ada di cerita kamu ❤️</div>
 
-  <div class="page-number" id="pageNum">Halaman 0</div>
+  <button onclick="flipPage()">Balik Halaman ➡</button>
 
-  <button onclick="nextPage()">➡</button>
 </div>
 
 <script>
-const pages = [
-  "Hari ini aku buka cerita tentang kamu...",
-  "Tentang seseorang yang lahir 23 tahun lalu 🎂",
-  "Dan tanpa sadar, jadi alasan aku tersenyum setiap hari.",
-  "Terima kasih sudah hadir di hidup aku.",
-  "Semoga di setiap langkah kamu, ada bahagia yang ikut berjalan.",
-  "Dan kalau boleh jujur...",
-  "Aku ingin tetap jadi bagian dari cerita kamu ke depan ❤️"
-];
+let currentPage = 1;
+const total = 6;
 
-let current = 0;
-
-function nextPage() {
-  if (current < pages.length) {
-    document.getElementById("content").style.opacity = 0;
-
-    setTimeout(() => {
-      document.getElementById("content").innerText = pages[current];
-      document.getElementById("content").style.opacity = 1;
-      document.getElementById("pageNum").innerText = "Halaman " + (current + 1);
-      current++;
-    }, 300);
-  } else {
-    document.getElementById("content").innerHTML = "Selamat ulang tahun Maharani ❤️<br><br>Aku harap cerita ini belum selesai.";
-    document.getElementById("pageNum").innerText = "Tamat";
+function flipPage() {
+  if (currentPage <= total) {
+    document.getElementById("p" + currentPage).classList.add("flipped");
+    currentPage++;
   }
 }
 </script>
